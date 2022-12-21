@@ -43,9 +43,21 @@ export const schemaTypes = [
         title: 'Enter manually',
       },
       {
+        name: 'rating',
+        type: 'number',
+        title: 'Rating',
+        fieldset: 'bookinfo'
+      },
+      {
         name: 'title',
         type: 'string',
         title: 'Title',
+        fieldset: 'bookinfo'
+      },
+      {
+        name: 'image',
+        type: 'image',
+        title: 'Book cover',
         fieldset: 'bookinfo'
       },
       {
@@ -65,12 +77,6 @@ export const schemaTypes = [
         name: 'year',
         type: 'string',
         title: 'Year',
-        fieldset: 'bookinfo'
-      },
-      {
-        name: 'image',
-        type: 'image',
-        title: 'Book cover',
         fieldset: 'bookinfo'
       },
       {
@@ -99,11 +105,20 @@ export const schemaTypes = [
         fieldset: 'bookinfo'
       },
       {
-        name: 'rating',
-        type: 'number',
-        title: 'Rating',
+        name: 'whenRead',
+        type: 'array',
+        title: 'When did I finish reading it',
+        of: [
+          {
+            name: 'date',
+            type: 'date',
+            title: 'date',
+            dateFormat: 'YYYY-MM-DD',
+            defaultValue: Date.now()
+          }
+        ],
         fieldset: 'bookinfo'
-      },
+      }
     ],
     orderings: [
       {
@@ -115,22 +130,6 @@ export const schemaTypes = [
             direction: 'desc'
           }
         ]
-      }
-    ]
-  }
-]
-
-
-
-
-orderings: [
-  {
-    title: 'Year',
-    name: 'year',
-    by: [
-      {
-        field: 'year',
-        direction: 'desc'
       }
     ]
   }

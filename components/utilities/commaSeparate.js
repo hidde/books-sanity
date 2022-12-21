@@ -1,3 +1,3 @@
 export function commaSeparate(item, index) {
-  return (index ? ', ': '') + item.name
+  return (index ? ', ': '') + item
 }

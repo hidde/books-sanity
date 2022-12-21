@@ -1,42 +1,38 @@
-import { React } from "react";
+import { React, useCallback, useState } from "react";
 import {ISBNLookup} from './ISBNLookup.jsx'
-import { Box, Button, Card, Stack, Text, TextInput } from "@sanity/ui";
-import { useCallback, useState } from "react";
+import { Button, Card, Inline, Stack } from "@sanity/ui";
 import { set } from "sanity";
 
 export function BookDocumentInput(props) {
   const { onChange, renderDefault } = props;
 
-  const [title, setTitle] = useState("");
+  const [bookDetails, setBookDetails] = useState(undefined);
 
   const handleImport = useCallback(() => {
-    onChange([set(title, ["title"])]);
-    setTitle("");
-  }, [title]);
+    console.log(bookDetails)
+    onChange([set(bookDetails.title, ["title"])]);
+    onChange([set(bookDetails.authors, ["authors"])]);
+    onChange([set(bookDetails.year, ["year"])]);
+    onChange([set(bookDetails.pages, ["pages"])]);
+    onChange([set(bookDetails.publishers, ["publishers"])]);
+    onChange([set(true, ["enterManually"])])
+  });
 
   return (
     <Stack space={5}>
-      <Card border padding={4} radius={3} tone="primary">
-        <Text as="h2" weight="bold">
-          Import book details from elsewhere
-        </Text>
-
-        <Box marginTop={4}>
-          <Text htmlFor="book-title">Title</Text>
-          <TextInput
-          id=""
-            onChange={(event) => setTitle(event.currentTarget.value)}
-            value={title}
+      <ISBNLookup bookDetails={bookDetails} setBookDetails={setBookDetails} onChange={(event) => console.log('change happened', event)}></ISBNLookup>
+      <Card padding={2} style={{'display': bookDetails != undefined ? 'block' : 'none', textAlign: 'center'}}>
+        <Inline space={[2]}>
+          <Button
+            fontSize={[2]}
+            mode="ghost"
+            tone="brand"
+            padding={[3, 3, 4]}
+            text="Use for this book"
+            onClick={handleImport}
           />
-        </Box>
-
-        <Stack marginTop={4}>
-          <Button onClick={handleImport} tone="primary" text="Import" />
-        </Stack>
+        </Inline>
       </Card>
-
-      <ISBNLookup ISBNLookup onChange={(event) => console.log('change happened', event)}></ISBNLookup>
-
       {renderDefault(props)}
     </Stack>
   );
