@@ -7,8 +7,8 @@ import BarCodeScanner from "./BarCodeScanner";
 
 function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
   const [isbn, setIsbn] = useState('');
-  let [lookedUp, setLookedUp] = useState(false);
-  let [cameraOpen, setCameraOpen] = useState(false);
+  const [lookedUp, setLookedUp] = useState(false);
+  const [cameraOpen, setCameraOpen] = useState(false);
   let [result, setResult] = useState("");
 
   function lookUpIsbn(e) {
@@ -78,7 +78,7 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
                     />
                   </Box>
                   <Box padding={1}>
-                    <BarCode props={isbn, setIsbn, cameraOpen, setCameraOpen, result}></BarCode>
+                    <BarCode cameraOpen={cameraOpen} setCameraOpen={setCameraOpen}></BarCode>
                   </Box>
               </Inline>
           }
@@ -90,7 +90,7 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
           </Inline>
         </Card>
       </Stack>
-      {cameraOpen && <BarCodeScanner props={cameraOpen, setCameraOpen, onDetected} />}
+      {cameraOpen && <BarCodeScanner cameraOpen={cameraOpen} setCameraOpen={setCameraOpen} onDetected={onDetected} />}
       <BookPreview bookDetails={bookDetails} lookedUp={lookedUp} />
     </Stack>
   )
