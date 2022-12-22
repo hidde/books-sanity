@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import config from "./config/quagga.config.json";
 import Quagga from "quagga";
 
-const Scanner = props => {
+const BarCodeScanner = props => {
   const { onDetected } = props;
 
   useEffect(() => {
@@ -74,4 +74,4 @@ const Scanner = props => {
   );
 };
 
-export default Scanner;
+export default BarCodeScanner;

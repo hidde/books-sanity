@@ -3,10 +3,13 @@ import { Card, Stack, Inline, Text, TextInput, Button, Box } from "@sanity/ui";
 import { SearchIcon } from "@sanity/icons";
 import { BookPreview } from "./BookPreview.jsx"; 
 import { BarCode } from "./BarCode";
+import BarCodeScanner from "./BarCodeScanner";
 
 function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
   const [isbn, setIsbn] = useState('');
   let [lookedUp, setLookedUp] = useState(false);
+  let [cameraOpen, setCameraOpen] = useState(false);
+  let [result, setResult] = useState("");
 
   function lookUpIsbn(e) {
     const fetchUrl = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&format=json&jscmd=data`;
@@ -44,6 +47,12 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
     setIsbn(e.target.value)
   }
 
+  const onDetected = result => {
+    alert('result')
+    setResult(result);
+    setIsbn(result);
+    setCameraOpen(false);
+  };
 
   return (  
     <Stack space={5}>
@@ -69,9 +78,9 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
                     />
                   </Box>
                   <Box padding={1}>
-                    <BarCode isbn={isbn} setIsbn={setIsbn}></BarCode>
+                    <BarCode props={isbn, setIsbn, cameraOpen, setCameraOpen, result}></BarCode>
                   </Box>
-                </Inline>
+              </Inline>
           }
           />
           <Inline space={2} style={{marginTop: '.5em'}} >
@@ -81,6 +90,7 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
           </Inline>
         </Card>
       </Stack>
+      {cameraOpen && <BarCodeScanner props={cameraOpen, setCameraOpen, onDetected} />}
       <BookPreview bookDetails={bookDetails} lookedUp={lookedUp} />
     </Stack>
   )

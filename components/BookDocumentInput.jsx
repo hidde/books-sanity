@@ -20,7 +20,7 @@ export function BookDocumentInput(props) {
 
   return (
     <Stack space={5}>
-      <ISBNLookup bookDetails={bookDetails} setBookDetails={setBookDetails} onChange={(event) => console.log('change happened', event)}></ISBNLookup>
+      <ISBNLookup bookDetails={bookDetails} setBookDetails={setBookDetails}></ISBNLookup>
       <Card padding={2} style={{'display': bookDetails != undefined ? 'block' : 'none', textAlign: 'center'}}>
         <Inline space={[2]}>
           <Button

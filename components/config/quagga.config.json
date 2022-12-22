@@ -3,7 +3,7 @@
     "type": "LiveStream",
     "constraints": {
       "width": { "min": 450 },
-      "height": { "min": 300 },
+      "height": { "min": 100 },
       "facingMode": "environment",
       "aspectRatio": { "min": 1, "max": 2 }
     }
@@ -12,8 +12,8 @@
     "patchSize": "medium",
     "halfSample": true
   },
-  "numOfWorkers": 2,
-  "frequency": 10,
+  "numOfWorkers": 4,
+  "frequency": 20,
   "decoder": {
     "readers": ["ean_reader"]
   },

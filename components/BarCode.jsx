@@ -1,26 +1,10 @@
-import React, { useState } from "react"
-import BarCodeScanner from "./BarCodeScanner";
+import React from "react"
 
-export function BarCode({ isbn, setIsbn, ...rest }) {
-  const [camera, setCamera] = useState(false);
-  const [result, setResult] = useState(null);
-
-  const onDetected = result => {
-    alert('result')
-    setResult(result);
-    setIsbn(result);
-    setCamera(false);
-  };
+export function BarCode({ isbn, setIsbn, cameraOpen, setCameraOpen, ...rest }) {
 
   return (
-      <>
-        <button onClick={() => setCamera(!camera)}>
-          {result ? '' : "Scanning..."}
-          {camera ? "Give up" : "Scan"}
-        </button>
-        <span className="container" hidden>
-          {camera && <BarCodeScanner onDetected={onDetected} />}
-        </span>
-      </>
+      <button onClick={() => setCameraOpen(!cameraOpen)}>
+        {cameraOpen ? "Give up" : "Scan"}
+      </button>
   )
 }
