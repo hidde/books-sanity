@@ -1,8 +1,8 @@
 import { React, useState } from "react";
-import { Card, Stack, Text, TextInput, Button, Box } from "@sanity/ui";
+import { Card, Stack, Inline, Text, TextInput, Button, Box } from "@sanity/ui";
 import { SearchIcon } from "@sanity/icons";
 import { BookPreview } from "./BookPreview.jsx"; 
-import { set } from "sanity";
+import { BarCode } from "./BarCode";
 
 function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
   const [isbn, setIsbn] = useState('');
@@ -58,17 +58,27 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
             onChange={handleChange}
             onSubmit={handleChange}
               suffix={
-              <Box padding={1}>
-                <Button
-                  icon={SearchIcon}
-                  mode="bleed"
-                  padding={2}
-                  text="Look up"
-                  type="submit" onClick={lookUpIsbn}
-                />
-              </Box>
-            }
+                <Inline>
+                  <Box padding={1}>
+                    <Button
+                      icon={SearchIcon}
+                      mode="bleed"
+                      padding={2}
+                      text="Look up"
+                      type="submit" onClick={lookUpIsbn}
+                    />
+                  </Box>
+                  <Box padding={1}>
+                    <BarCode isbn={isbn} setIsbn={setIsbn}></BarCode>
+                  </Box>
+                </Inline>
+          }
           />
+          <Inline space={2} style={{marginTop: '.5em'}} >
+          <label><input type="radio" /> Open Library</label>
+          <label><input type="radio" /> Bol.com</label>
+          <label><input type="radio" /> Amazon</label>
+          </Inline>
         </Card>
       </Stack>
       <BookPreview bookDetails={bookDetails} lookedUp={lookedUp} />

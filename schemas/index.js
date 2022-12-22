@@ -16,7 +16,7 @@ export const schemaTypes = [
       {
         name: 'bookinfo',
         title: 'About the book',
-        hidden: ({document}) => !document?.enterManually
+        hidden: ({document}) => !document?.enterManually || document?.title
       }
     ],
     fields: [
@@ -105,18 +105,15 @@ export const schemaTypes = [
         fieldset: 'bookinfo'
       },
       {
+        name: 'isbn',
+        type: 'string',
+        title: 'ISBN',
+        fieldset: 'bookinfo'
+      },
+      {
         name: 'whenRead',
-        type: 'array',
+        type: 'string',
         title: 'When did I finish reading it',
-        of: [
-          {
-            name: 'date',
-            type: 'date',
-            title: 'date',
-            dateFormat: 'YYYY-MM-DD',
-            defaultValue: Date.now()
-          }
-        ],
         fieldset: 'bookinfo'
       }
     ],
