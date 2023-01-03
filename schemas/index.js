@@ -12,11 +12,11 @@ export const schemaTypes = [
       {
         name: 'lookup',
         title: 'Find a book',
+        hidden: ({document}) => document?.title
       },
       {
         name: 'bookinfo',
-        title: 'About the book',
-        hidden: ({document}) => !document?.enterManually || document?.title
+        title: 'About the book'
       }
     ],
     fields: [
@@ -40,7 +40,7 @@ export const schemaTypes = [
       {
         name: 'enterManually',
         type: 'boolean',
-        title: 'Enter manually',
+        title: 'Enter manually'
       },
       {
         name: 'rating',
@@ -115,6 +115,12 @@ export const schemaTypes = [
         type: 'string',
         title: 'When did I finish reading it',
         fieldset: 'bookinfo'
+      },
+      {
+        name: 'order',
+        type: 'number',
+        title: 'Order',
+        hidden: true
       }
     ],
     orderings: [
@@ -124,6 +130,24 @@ export const schemaTypes = [
         by: [
           {
             field: 'year',
+            direction: 'desc'
+          },
+          {
+            field: '_createdAt',
+            direction: 'desc'
+          }
+        ]
+      },
+      {
+        title: 'When read',
+        name: 'whenread',
+        by: [
+          {
+            field: 'whenRead',
+            direction: 'desc',
+          },
+          {
+            field: '_createdAt',
             direction: 'desc'
           }
         ]

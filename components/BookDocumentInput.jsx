@@ -1,5 +1,5 @@
 import { React, useCallback, useState } from "react";
-import {ISBNLookup} from './ISBNLookup.jsx'
+import { ISBNLookup } from './ISBNLookup.jsx'
 import { Button, Card, Inline, Stack } from "@sanity/ui";
 import { set } from "sanity";
 
@@ -20,7 +20,7 @@ export function BookDocumentInput(props) {
 
   return (
     <Stack space={5}>
-      <ISBNLookup bookDetails={bookDetails} setBookDetails={setBookDetails}></ISBNLookup>
+      {props?.value?.title ? false : <ISBNLookup bookDetails={bookDetails} setBookDetails={setBookDetails}></ISBNLookup>}
       <Card padding={2} style={{'display': bookDetails != undefined ? 'block' : 'none', textAlign: 'center'}}>
         <Inline space={[2]}>
           <Button

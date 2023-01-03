@@ -1,6 +1,5 @@
 import { React } from "react";
 import { Card, Inline, Button, Text, Grid, Stack } from "@sanity/ui";
-import { commaSeparate } from "./utilities/commaSeparate.js";
 
 function BookPreview({bookDetails: book, lookedUp}) {
   if (book) {
@@ -14,7 +13,7 @@ function BookPreview({bookDetails: book, lookedUp}) {
             </Stack>
             <Stack space={2}>
               <Text as="dt" size={2} weight="semibold">Author(s)</Text>
-              <Text as="dd" size={3}>{book.authors?.map(commaSeparate)}</Text>
+              <Text as="dd" size={3}>{book.authors?.join(', ')}</Text>
             </Stack>
             <Stack space={2}>
               <Text as="dt" size={2} weight="semibold">Year</Text>
@@ -22,7 +21,7 @@ function BookPreview({bookDetails: book, lookedUp}) {
             </Stack>
             <Stack space={2}>
               <Text as="dt" size={2} weight="semibold">Publisher</Text>
-              <Text as="dd" size={3}>{book.publishers?.map(commaSeparate)}</Text>
+              <Text as="dd" size={3}>{book.publishers?.join(', ')}</Text>
             </Stack>
             <Stack space={3}>
               <Text as="dt" size={2} weight="semibold">Pages</Text>

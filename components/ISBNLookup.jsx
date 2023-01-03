@@ -83,11 +83,11 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
               </Inline>
           }
           />
-          <Inline space={2} style={{marginTop: '.5em'}} >
+          {/* <Inline space={2} style={{marginTop: '.5em'}} >
           <label><input type="radio" /> Open Library</label>
           <label><input type="radio" /> Bol.com</label>
           <label><input type="radio" /> Amazon</label>
-          </Inline>
+          </Inline> */}
         </Card>
       </Stack>
       {cameraOpen && <BarCodeScanner cameraOpen={cameraOpen} setCameraOpen={setCameraOpen} onDetected={onDetected} />}
