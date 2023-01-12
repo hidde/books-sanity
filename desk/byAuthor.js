@@ -2,7 +2,7 @@ export default function getItemsByAuthor(S, authors) {
   const authorItems = [];
 
   // deduplicate
-  authors = [...new Set(authors)];
+  authors = [...new Set(authors.sort())];
 
   for (const author of authors) {
     authorItems.push(

@@ -15,11 +15,7 @@ const config = {
   dataset,
 
   plugins: [
-    deskTool(
-      {
-        structure
-      }
-    ), 
+    deskTool({structure}), 
     visionTool()
   ],
 

@@ -42,7 +42,7 @@ const structure = (S) =>
                       .getMenuItems()
                   )              
                   .filter(`_type == "book" && whenRead == null`)                       
-                  
+
                 )
               ]
             )

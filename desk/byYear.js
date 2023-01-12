@@ -3,7 +3,7 @@ export default function getItemsByYear(S, years) {
   let temp = [];
   let counter = 0;
   
-  function camelize(str) {
+  function normalize(str) {
     str = str.toString().replace(/[,.&-]/g, '');
 
     return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
@@ -16,16 +16,16 @@ export default function getItemsByYear(S, years) {
 
     counter++;
 
-    if (temp.indexOf(camelize(year)) > 0) {
+    if (temp.indexOf(normalize(year)) > 0) {
       year = `${year} (duplicate; #${counter})`;
     } else {
       if (year && year.length <= 4 && typeof(year) === 'string') {
-        temp.push(camelize(year));
+        temp.push(normalize(year));
       }
     }
   }
 
-  years = [...new Set(temp)];
+  years = [...new Set(temp.sort())];
 
   for (let year of years) {
     yearItems.push(

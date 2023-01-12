@@ -4,7 +4,7 @@ export default function getItemsByPublisher(S, publishers) {
   let counter = 0;
 
   // deduplicate
-  publishers = [...new Set(publishers)];
+  publishers = [...new Set(publishers.sort())];
   
   function camelize(str) {
     str = str.replace(/[,.&-]/g, '');

@@ -43,6 +43,13 @@ export const schemaTypes = [
         title: 'Enter manually'
       },
       {
+        name: 'unread',
+        type: 'boolean',
+        title: 'Still reading',
+        description: 'I\'m actually still reading this, let it show up as ”Currently reading”, but not in lists of read books',
+        fieldset: 'bookinfo'
+      },
+      {
         name: 'rating',
         type: 'number',
         title: 'Rating',
