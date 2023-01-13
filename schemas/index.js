@@ -120,7 +120,7 @@ export const schemaTypes = [
       {
         name: 'whenRead',
         type: 'string',
-        title: 'When did I finish reading it',
+        title: 'What year do / did I read this book in',
         fieldset: 'bookinfo'
       },
       {
