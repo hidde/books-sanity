@@ -8,7 +8,7 @@ const BarCodeScanner = props => {
   useEffect(() => {
     Quagga.init(config, err => {
       if (err) {
-        console.log(err, "error msg");
+        // console.log(err, "error msg");
       }
       Quagga.start();
       return () => {

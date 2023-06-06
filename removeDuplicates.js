@@ -34,10 +34,6 @@ const editNextBatch = async () => {
     return null
   }
 
-  console.log(
-    `Editing batch:\n %s`,
-    patches.map(patch => `${patch.id} => ${JSON.stringify(patch.patch)}`).join('\n')
-  )
   const transaction = createTransaction(patches)
   await commitTransaction(transaction)
   return editNextBatch()

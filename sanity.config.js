@@ -2,20 +2,30 @@ import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
-import {structure} from './desk/deskStructure'
 
 export const projectId = 'e86znw0z';
 export const dataset = 'production';
 
 const config = {
   name: 'default',
-  title: 'Hidde\'s books',
+  title: 'Hidde\'s books and concerts',
 
   projectId,
   dataset,
 
   plugins: [
-    deskTool({structure}), 
+    deskTool({
+      structure: (S) =>
+      S.list()
+      .title('Manage contents')
+        .items(
+        [
+          ...S.documentTypeListItems().filter(
+            item => !['artist', 'concertVenue', 'festival'].includes(item.getId())
+          ),
+        ]
+      )               
+    }), 
     visionTool()
   ],
 

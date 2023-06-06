@@ -20,7 +20,7 @@ export default function getItemsByAuthor(S, authors) {
     )
   } 
 
-  console.log(authorItems);
+  // console.log(authorItems);
 
   return authorItems
 }

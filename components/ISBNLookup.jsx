@@ -2,8 +2,6 @@ import { React, useState } from "react";
 import { Card, Stack, Inline, Text, TextInput, Button, Box } from "@sanity/ui";
 import { SearchIcon } from "@sanity/icons";
 import { BookPreview } from "./BookPreview.jsx"; 
-import { BarCode } from "./BarCode";
-import BarCodeScanner from "./BarCodeScanner";
 
 function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
   const [isbn, setIsbn] = useState('');
@@ -22,7 +20,7 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
     .then((response) => response.json())
     .then((data) => {
       const book = data[Object.keys(data)[0]];
-      console.log("book",book);
+      // console.log("book",book);
       const restructuredData = {
         title: book.title,
         subtitle: book.subtitle, 
@@ -90,7 +88,6 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
           </Inline> */}
         </Card>
       </Stack>
-      {cameraOpen && <BarCodeScanner cameraOpen={cameraOpen} setCameraOpen={setCameraOpen} onDetected={onDetected} />}
       <BookPreview bookDetails={bookDetails} lookedUp={lookedUp} />
     </Stack>
   )
