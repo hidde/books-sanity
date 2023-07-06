@@ -75,9 +75,6 @@ function ISBNLookup({setBookDetails, bookDetails, ...rest}) {
                       type="submit" onClick={lookUpIsbn}
                     />
                   </Box>
-                  <Box padding={1}>
-                    <BarCode cameraOpen={cameraOpen} setCameraOpen={setCameraOpen}></BarCode>
-                  </Box>
               </Inline>
           }
           />

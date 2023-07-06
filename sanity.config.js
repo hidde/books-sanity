@@ -8,7 +8,7 @@ export const dataset = 'production';
 
 const config = {
   name: 'default',
-  title: 'Hidde\'s books and concerts',
+  title: 'log.hidde.blog',
 
   projectId,
   dataset,
@@ -21,7 +21,7 @@ const config = {
         .items(
         [
           ...S.documentTypeListItems().filter(
-            item => !['artist', 'concertVenue', 'festival'].includes(item.getId())
+            item => !['artist', 'concertVenue', 'festival', 'grower', 'coffeeStore'].includes(item.getId())
           ),
         ]
       )               
