@@ -2,6 +2,20 @@ export const coffee = {
     name: 'coffee',
     type: 'document',
     title: 'Coffee',
+    preview: {
+      select: {
+        title: 'title',
+        store: 'store.name',
+        date: 'date'
+      },
+      prepare(selection) {
+        const {title, store, date} = selection
+        return {
+          title: `${title} (from ${store})`,
+          subtitle: date ? `Had this from ${date}` : `""`
+        }
+      }    
+    },
     fields: [
       {
         name: 'rating',
@@ -68,6 +82,13 @@ export const coffee = {
           }
         ],
         title: 'Gift from'
+      },
+      {
+        name: 'notes',
+        type: 'array',
+        type: 'array', 
+        of: [{type: 'block'}],
+        title: 'Notes / extra info'
       },
       {
         name: 'image',
