@@ -1,3 +1,3 @@
-# Sanity Books Studio
+# Sanity Studio for Hidde's data
 
-This is a demo v3 Studio that can manage books and look up book data by ISBN number.
+This is a Studio to collect various bits of data.
