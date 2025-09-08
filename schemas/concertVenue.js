@@ -16,7 +16,7 @@ export const concertVenue =   {
       {
         name: 'citySpecialPrefix',
         type: 'string',
-        title: 'City prefix (eg 'op' for 'op Vlieland')'
+        title: 'City prefix (eg ‘op’ for ‘op Vlieland’)'
       },
       {
         name: 'country',
